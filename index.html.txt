@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد جمال | Data Scientist Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .grid-layout { display: grid; grid-template-columns: 320px 1fr; gap: 30px; }
+        .card { background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-3px); border-color: var(--primary); }
+        .profile-card { text-align: center; position: sticky; top: 40px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-body); box-shadow: 0 0 0 2px var(--primary); margin-bottom: 20px; }
+        .profile-name { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
+        .profile-role { color: var(--primary); font-weight: 500; margin-bottom: 20px; display: block; }
+        .profile-contact li { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        .profile-contact li:last-child { border-bottom: none; }
+        .profile-contact i { color: var(--text-muted); margin-right: 10px; }
+        .social-btns { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .social-btn { width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
+        .social-btn:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+        .section-header { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .section-header h2 { font-size: 1.4rem; font-weight: 700; }
+        .section-header i { margin-left: 10px; color: var(--primary); font-size: 1.2rem; }
+        .about-text { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+        .skill-item { margin-bottom: 15px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.95rem; font-weight: 600; }
+        .progress-bg { background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); border-radius: 4px; }
+        .timeline-item { position: relative; padding-right: 30px; margin-bottom: 25px; border-right: 2px solid var(--border); }
+        .timeline-item:last-child { border-right: none; margin-bottom: 0; }
+        .timeline-dot { position: absolute; right: -6px; top: 5px; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; border: 2px solid var(--bg-card); }
+        .timeline-date { font-size: 0.85rem; color: var(--primary); margin-bottom: 5px; display: block; }
+        .timeline-title { font-weight: 700; font-size: 1.1rem; }
+        .timeline-desc { color: var(--text-muted); font-size: 0.95rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .project-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .project-card img { width: 100%; height: 140px; object-fit: cover; }
+        .project-body { padding: 15px; }
+        .project-body h4 { margin-bottom: 8px; font-size: 1.1rem; }
+        .project-body p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; height: 60px; overflow: hidden; }
+        .tags-container { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 15px; }
+        .mini-tag { font-size: 0.75rem; background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 3px 8px; border-radius: 4px; }
+        .project-btn { display: inline-block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
+        .project-btn:hover { color: var(--primary); }
+        .download-btn { display: block; width: 100%; text-align: center; padding: 12px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 8px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        .download-btn:hover { background: var(--primary); color: #000; }
+        @media (max-width: 850px) { .grid-layout { grid-template-columns: 1fr; } .profile-card { position: static; margin-bottom: 30px; } .profile-img { margin: 0 auto 20px; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="grid-layout">
+        
+        <aside>
+            <div class="card profile-card">
+                <img src="https://i.ibb.co/W4v719kq/me-png.png" alt="محمد جمال الغنام" class="profile-img">
+                
+                <h1 class="profile-name">محمد جمال الغنام</h1>
+                <span class="profile-role">Data Scientist | AI Engineer</span>
+                
+                <ul class="profile-contact">
+                    <li><span>البريد الإلكتروني</span><i class="fas fa-envelope"></i></li>
+                    <li style="border:none; color: var(--primary); font-size: 0.8rem; text-align: left;">mohamedgamalelghanam@gmail.com</li>
+                    
+                    <li><span>رقم الهاتف</span><i class="fas fa-phone"></i></li>
+                    <li style="border:none; color: var(--primary);">+20 102 979 6096</li>
+
+                    <li><span>الموقع</span><i class="fas fa-map-marker-alt"></i></li>
+                    <li style="border:none; color: var(--primary);">القاهرة، مصر</li>
+                </ul>
+
+                <div class="social-btns">
+                    <a href="https://www.linkedin.com/in/mohamed-gamal-311a7226b/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/mohamedgamal" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/201029796096" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i> تحميل السيرة الذاتية (PDF)
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <section class="card">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> نبذة تعريفية</h2>
+                </div>
+                <p class="about-text">
+                    طالب هندسة شغوف ومتخصص في علوم البيانات والذكاء الاصطناعي. أجمع بين الأساس الهندسي القوي والمهارات البرمجية المتقدمة في Python و Machine Learning. هدفي هو استغلال البيانات الضخمة لحل المشكلات المعقدة.
+                </p>
+            </section>
+
+            <section class="card">
+                <div class="section-header">
+                    <h2><i class="fas fa-code"></i> المهارات التقنية</h2>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python & Data Analysis</span><span>90%</span></div>
+                    <div class="progress-bg"><div class="progress-bar" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Machine Learning / AI Models</span><span>85%</span></div>
+                    <div class="progress-bg"><div class="progress-bar" style="width: 85%"></div></div>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap"></i> التعليم</h2>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">الحالي</span>
+                    <h3 class="timeline-title">بكالوريوس هندسة الاتصالات والحاسبات</h3>
+                    <p class="timeline-desc">التركيز على الرياضيات، الإحصاء، والبرمجة الهندسية.</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="section-header">
+                    <h2><i class="fas fa-layer-group"></i> المشاريع</h2>
+                </div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="https://picsum.photos/seed/ai_proj1/300/200" alt="Project 1">
+                        <div class="project-body">
+                            <h4>نظام التنبؤ بالمبيعات</h4>
+                            <div class="tags-container"><span class="mini-tag">Python</span><span class="mini-tag">ML</span></div>
+                            <p>نموذج تعلم آلي للتنبؤ بالمبيعات الشهرية بناءً على البيانات التاريخية.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

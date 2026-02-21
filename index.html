@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Gamal | Data Scientist</title>
+    
+    <!-- استدعاء الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === المتغيرات الأساسية - الوضع العادي (Light) === */
+        :root {
+            --bg-body: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-nav: rgba(255, 255, 255, 0.9);
+            --text-main: #334155;
+            --text-light: #64748b;
+            --heading: #0f172a;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --card-bg: #ffffff;
+        }
+
+        /* === وضع الظلام (Dark Mode) === */
+        body.dark-mode {
+            --bg-body: #0f172a;       /* خلفية داكنة جداً */
+            --bg-alt: #1e293b;       /* كروت أفتح شوية */
+            --bg-nav: rgba(15, 23, 42, 0.9);
+            --text-main: #e2e8f0;
+            --text-light: #94a3b8;
+            --heading: #f8fafc;
+            --primary: #38bdf8;       /* سماوي فاتح في الدارك مود عشان الفرق */
+            --primary-hover: #0ea5e9;
+            --border: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            --card-bg: #1e293b;
+        }
+
+        /* الخطوط */
+        html[lang="ar"] body { font-family: 'Tajawal', sans-serif; }
+        html[lang="en"] body { font-family: 'Inter', sans-serif; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: background 0.3s, border 0.3s;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--heading);
+        }
+        .logo span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        
+        /* تنسيق الأزرار في الناف بار */
+        .nav-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .control-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        .lang-btn-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            width: auto;
+            border-radius: 20px;
+            padding: 0 15px;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--heading);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            transition: color 0.3s;
+        }
+
+        .hero-text h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-img img {
+            width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid #2563eb;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 2;
+    position: relative;
+    transition: transform 0.3s ease;
+        }
+
+        .shape {
+            position: absolute;
+            background: var(--primary);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-inline-start: 15px;
+        }
+        .btn-outline:hover { background: var(--bg-alt); }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h3 {
+            font-size: 2rem;
+            color: var(--heading);
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Cards General Style (Skills, Projects, About) */
+        .card-bg {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .skill-card {
+            background: var(--bg-alt);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* Certificates */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+   .cert-img img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: contain !important;
+    background-color: #f9f9f9;
+    display: block;
+    margin: 0 auto;
+}
+        
+        .cert-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        .cert-img-container {
+            width: 100%;
+            height: 220px;
+            background-color: var(--bg-alt);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .cert-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .cert-card:hover .cert-img-container img { transform: scale(1.05); }
+
+        .cert-body { padding: 20px; text-align: center; }
+        .cert-icon {
+            font-size: 2.5rem;
+            color: #fbbf24;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .cert-title { font-size: 1.2rem; font-weight: 700; color: var(--heading); margin-bottom: 5px; }
+        .cert-issuer { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-alt);
+            object-fit: cover;
+        }
+        .project-content { padding: 20px; }
+        .project-tag {
+            background: #dbeafe;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        body.dark-mode .project-tag { background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
+
+        /* Contact */
+        .contact-card {
+            background: var(--bg-alt);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+        .contact-item a { color: var(--text-main); }
+        .contact-item i { font-size: 1.5rem; color: var(--primary); }
+
+        /* Footer */
+        footer {
+            background: var(--heading);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-img { margin-top: 30px; }
+            .nav-links { display: none; } /* إخفاء القائمة العلوية في الموبايل */
+            .navbar { padding: 15px; }
+            .container { padding: 0 15px; }
+            
+            /* تثبيت أزرار التحكم في الموبايل */
+            .nav-controls {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1001;
+                background: var(--bg-alt);
+                padding: 5px;
+                border-radius: 30px;
+                border: 1px solid var(--border);
+                display: flex;
+                gap: 5px;
+                box-shadow: var(--shadow);
+            }
+            .logo { margin-inline-start: 60px; } /* عشان ميعطلش فوق اللوجو */
+            .certificates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Mohamed<span>.Data</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="#about" data-ar="من أنا" data-en="About">من أنا</a></li>
+                <li><a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+                <li><a href="#certificates" data-ar="الشهادات" data-en="Certificates" style="color:var(--primary); font-weight:700;">الشهادات</a></li>
+                <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
+                <li><a href="#contact" data-ar="تواصل معي" data-en="Contact">تواصل معي</a></li>
+            </ul>
+
+            <!-- أزرار التحكم (لغة + ثيم) -->
+            <div class="nav-controls">
+                <!-- زر اللغة -->
+                <button class="control-btn lang-btn-text" onclick="toggleLanguage()">
+                    <i class="fas fa-globe"></i> 
+                    <span id="lang-text">En</span>
+                </button>
+                <!-- زر الدارك مود -->
+                <button class="control-btn" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero container" id="home">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h2 data-ar="أهلاً، أنا" data-en="Hello, I am">أهلاً، أنا</h2>
+                <h1 data-ar="محمد جمال الغنام" data-en="Mohamed Gamal Elghanam">محمد جمال الغنام</h1>
+                <p data-ar="طالب هندسة ومهندس بيانات متخصص في استخراج الأنماط من البيانات الضخمة وبناء النماذج التنبؤية. أركز على الدمج بين التفكير الهندسي المنظم وتقنيات الذكاء الاصطناعي لتطوير حلول برمجية ذكية." 
+                  data-en="Engineering student and Data Scientist focused on pattern recognition in big data and building predictive models. I combine structured engineering logic with AI techniques to develop intelligent software solutions.">
+   طالب هندسة ومهندس بيانات متخصص في استخراج الأنماط من البيانات الضخمة وبناء النماذج التنبؤية. أركز على الدمج بين التفكير الهندسي المنظم وتقنيات الذكاء الاصطناعي لتطوير حلول برمجية ذكية.
+</p>
+                </p>
+                <div>
+                    <a href="#contact" class="btn btn-primary" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
+                    <!-- رابط لينكد ان الشغال -->
+                    <a href="https://www.linkedin.com/in/mohamed-gamal-311a7226b/" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <div class="shape" style="width: 200px; height: 200px; top: -20px; right: -20px;"></div>
+                <img src="me.png.png" alt="Mohamed Gamal">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="section-title">
+            <h3 data-ar="من أنا؟" data-en="About Me">من أنا؟</h3>
+            <div class="line"></div>
+        </div>
+        <div class="card-bg" style="padding: 30px;">
+            <p data-ar="أنا طالب هندسة في سنتي الدراسية الحالية، أجمع بين الأساس الهندسي المتين وشغفي بعلم البيانات. بدأت رحلتي في البرمجة من خلال حل المشكلات الرياضية والهندسية، مما قادني للتعمق في تحليل البيانات والذكاء الاصطناعي. هدفي هو بناء أنظمة ذكية تساهم في اتخاذ قرارات دقيقة بناءً على البيانات." 
+   data-en="I am an engineering student combining a solid engineering foundation with a passion for Data Science. My journey began with solving mathematical and engineering problems, which led me to dive deep into data analysis and AI. My goal is to build intelligent systems that contribute to making accurate data-driven decisions.">
+   أنا طالب هندسة في سنتي الدراسية الحالية، أجمع بين الأساس الهندسي المتين وشغفي بعلم البيانات. بدأت رحلتي في البرمجة من خلال حل المشكلات الرياضية والهندسية، مما قادني للتعمق في تحليل البيانات والذكاء الاصطناعي. هدفي هو بناء أنظمة ذكية تساهم في اتخاذ قرارات دقيقة بناءً على البيانات.
+</p>
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <div class="section-title">
+            <h3 data-ar="مهاراتي التقنية" data-en="My Technical Skills">مهاراتي التقنية</h3>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <h4>Python</h4>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <h4 data-ar="تعلم الآلة" data-en="Machine Learning">تعلم الآلة</h4>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+                <h4>Data Analysis</h4>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h4 data-ar="تنظيف البيانات" data-en="Data Cleaning">تنظيف البيانات</h4>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
+                <h4>Power BI</h4>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fab fa-figma"></i></div>
+                <h4>Figma</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <div class="cert-card">
+    <div class="cert-img">
+        <img src="certificate.png" alt="NTI Machine Learning Certificate">
+    </div>
+    <div class="cert-info">
+        <h3 data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h3>
+        <p data-ar="برنامج تدريبي مكثف من المعهد القومي للاتصالات (NTI)، متخصص في خوارزميات تعلم الآلة وتحليل البيانات." 
+           data-en="Intensive training program from NTI, specializing in Machine Learning algorithms and data analysis.">
+           برنامج تدريبي مكثف من المعهد القومي للاتصالات (NTI)، متخصص في خوارزميات تعلم الآلة وتحليل البيانات.
+        </p>
+    </div>
+</div>
+     
+    <!-- Projects Section -->
+    <section id="projects" class="container" style="background-color: var(--bg-alt);">
+        <div class="section-title">
+            <h3 data-ar="أحدث المشاريع" data-en="Latest Projects">أحدث المشاريع</h3>
+            <div class="line"></div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://picsum.photos/seed/proj1/400/250" class="project-img" alt="Project 1">
+                <div class="project-content">
+                    <span class="project-tag">Python</span>
+                    <h4 data-ar="نظام التنبؤ بالمبيعات" data-en="Sales Prediction System">نظام التنبؤ بالمبيعات</h4>
+                    <p data-ar="نموذج تعلم آلي للتنبؤ بالمبيعات الشهرية بناءً على البيانات التاريخية." 
+                       data-en="A machine learning model to predict monthly sales based on historical data.">
+                       نموذج تعلم آلي للتنبؤ بالمبيعات الشهرية بناءً على البيانات التاريخية.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://picsum.photos/seed/proj2/400/250" class="project-img" alt="Project 2">
+                <div class="project-content">
+                    <span class="project-tag">Power BI</span>
+                    <h4 data-ar="لوحة معلومات العملاء" data-en="Customer Dashboard">لوحة معلومات العملاء</h4>
+                    <p data-ar="تصميم Dashboard تفاعلي لتحليل سلوك العملاء وزيادة المبيعات." 
+                       data-en="Interactive Dashboard design to analyze customer behavior and increase sales.">
+                       تصميم Dashboard تفاعلي لتحليل سلوك العملاء وزيادة المبيعات.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="contact-card">
+            <i class="fas fa-paper-plane" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h3 data-ar="هل أنت مستعد للعمل معاً؟" data-en="Ready to work together?">هل أنت مستعد للعمل معاً؟</h3>
+            <p data-ar="لا تتردد في التواصل معي عبر البريد الإلكتروني أو الواتساب." 
+               data-en="Feel free to contact me via email or WhatsApp.">
+               لا تتردد في التواصل معي عبر البريد الإلكتروني أو الواتساب.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <!-- رابط الإيميل الشغال -->
+                    <a href="mailto:mohamedgamalelghanam@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <!-- رابط الواتساب الشغال -->
+                    <a href="https://wa.me/201029796096" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <!-- رابط الجيت هاب الشغال بتاعك -->
+                    <a href="https://github.com/mohamedgamalelghanam-alt" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p data-ar="&copy; 2023 محمد جمال الغنام. جميع الحقوق محفوظة." 
+               data-en="&copy; 2023 Mohamed Gamal. All rights reserved.">
+               &copy; 2023 محمد جمال الغنام. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // وظيفة تغيير اللغة
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const langBtnText = document.getElementById('lang-text');
+            const currentLang = html.getAttribute('lang');
+            
+            if (currentLang === 'ar') {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langBtnText.innerText = 'Ar'; // يبقى يعرض "Ar" عشان نعرف نرجع تاني
+                updateTextContent('en');
+            } else {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langBtnText.innerText = 'En';
+                updateTextContent('ar');
+            }
+        }
+
+        function updateTextContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        // وظيفة تغيير الثيم (Light / Dark)
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun'); // بيغير الأيقونة لشمس
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon'); // بيغير الأيقونة لقمر
+            }
+        }
+    </script>
+</body>
+</html>
