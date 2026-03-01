@@ -92,7 +92,6 @@
 
         .nav-links { display: flex; gap: 20px; align-items: center; }
         
-        /* تنسيق الأزرار في الناف بار */
         .nav-controls {
             display: flex;
             gap: 10px;
@@ -381,8 +380,7 @@
                 padding: 5px;
                 border-radius: 30px;
                 border: 1px solid var(--border);
-                display: flex;
-                gap: 5px;
+                display: flex; gap: 5px;
                 box-shadow: var(--shadow);
             }
             .logo { margin-inline-start: 60px; }
@@ -395,7 +393,6 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">Mohamed<span>.Data</span></a>
-            
             <ul class="nav-links">
                 <li><a href="#about" data-ar="من أنا" data-en="About">من أنا</a></li>
                 <li><a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a></li>
@@ -403,11 +400,9 @@
                 <li><a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
                 <li><a href="#contact" data-ar="تواصل معي" data-en="Contact">تواصل معي</a></li>
             </ul>
-
             <div class="nav-controls">
                 <button class="control-btn lang-btn-text" onclick="toggleLanguage()">
-                    <i class="fas fa-globe"></i> 
-                    <span id="lang-text">En</span>
+                    <i class="fas fa-globe"></i> <span id="lang-text">En</span>
                 </button>
                 <button class="control-btn" onclick="toggleTheme()">
                     <i class="fas fa-moon" id="theme-icon"></i>
@@ -489,16 +484,24 @@
             <div class="line"></div>
         </div>
         <div class="projects-grid">
+            
             <div class="project-card">
                 <img src="https://raw.githubusercontent.com/mohamedgamalelghanam-alt/E-commerce-Segmentation/main/customer_segments.png" class="project-img" alt="E-commerce Segmentation" onerror="this.src='https://picsum.photos/seed/segments/400/250'">
                 <div class="project-content">
                     <span class="project-tag">Machine Learning</span>
                     <h4 data-ar="تقسيم عملاء المتجر الإلكتروني" data-en="E-commerce Segmentation">تقسيم عملاء المتجر الإلكتروني</h4>
-                    <p data-ar="استخدام خوارزميات الـ Clustering لتصنيف العملاء بناءً على سلوك الشراء." 
-                       data-en="Applying Clustering algorithms to segment customers based on purchasing behavior.">
-                       استخدام خوارزميات الـ Clustering لتصنيف العملاء بناءً على سلوك الشراء.
+                    <p data-ar="تصنيف العملاء باستخدام خوارزميات الـ Clustering مع لوحة تحكم تفاعلية (Streamlit) لعرض النتائج." 
+                       data-en="Customer segmentation using Clustering algorithms with an interactive Streamlit dashboard.">
+                       تصنيف العملاء باستخدام خوارزميات الـ Clustering مع لوحة تحكم تفاعلية (Streamlit) لعرض النتائج.
                     </p>
-                    <a href="https://github.com/mohamedgamalelghanam-alt/E-commerce-Segmentation" target="_blank" style="color:var(--primary); font-weight:bold; font-size:0.8rem; margin-top:10px; display:block;">View on GitHub</a>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <a href="https://e-commerce-segmentation-6zsztz6gesr7kbsrhyl2hn.streamlit.app/" target="_blank" style="background: var(--primary); color: white; padding: 6px 12px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-play-circle"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/mohamedgamalelghanam-alt/E-commerce-Segmentation" target="_blank" style="border: 1px solid var(--primary); color: var(--primary); padding: 6px 12px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
             </div>
             
