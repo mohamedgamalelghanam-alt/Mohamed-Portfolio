@@ -213,10 +213,10 @@
             <h3 data-ar="الشهادات" data-en="Certificates">Certificates</h3>
             <div class="line"></div>
         </div>
-        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 400px; margin: 0 auto;">
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: var(--shadow);">
             <img src="certificate.png" style="width: 100%; height: auto;" alt="NTI Machine Learning Certificate">
             <div style="padding: 20px; text-align: center;">
-                <h3 style="font-size: 1.2rem; margin-bottom: 5px;" data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h3>
+                <h4 style="font-size: 1.2rem; margin-bottom: 5px;" data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h4>
                 <p style="color: var(--text-light); font-size: 0.9rem;">National Telecommunication Institute</p>
             </div>
         </div>
