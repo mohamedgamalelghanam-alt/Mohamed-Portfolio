@@ -180,6 +180,19 @@
         </div>
     </header>
 
+    <section id="about" class="container">
+        <div class="section-title">
+            <h3 data-ar="من أنا؟" data-en="About Me">About Me</h3>
+            <div class="line"></div>
+        </div>
+        <div style="background: var(--card-bg); padding: 30px; border: 1px solid var(--border); border-radius: var(--radius);">
+            <p data-ar="أنا طالب هندسة في سنتي الدراسية الحالية، أجمع بين الأساس الهندسي المتين وشغفي بعلم البيانات. بدأت رحلتي في البرمجة من خلال حل المشكلات الرياضية والهندسية، مما قادني للتعمق في تحليل البيانات والذكاء الاصطناعي." 
+               data-en="I am an engineering student combining a solid engineering foundation with a passion for Data Science. My journey began with solving mathematical and engineering problems, which led me to dive deep into data analysis and AI.">
+                I am an engineering student combining a solid engineering foundation with a passion for Data Science. My journey began with solving mathematical and engineering problems, which led me to dive deep into data analysis and AI.
+            </p>
+        </div>
+    </section>
+
     <section id="skills" class="container">
         <div class="section-title">
             <h3 data-ar="مهاراتي التقنية" data-en="My Technical Skills">My Technical Skills</h3>
@@ -192,6 +205,20 @@
             <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-bar"></i></div><h4>Data Analysis</h4></div>
             <div class="skill-card"><div class="skill-icon"><i class="fas fa-database"></i></div><h4>Data Cleaning</h4></div>
             <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-pie"></i></div><h4>Power BI</h4></div>
+        </div>
+    </section>
+
+    <section id="certificates" class="container">
+        <div class="section-title">
+            <h3 data-ar="الشهادات" data-en="Certificates">Certificates</h3>
+            <div class="line"></div>
+        </div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 400px; margin: 0 auto;">
+            <img src="certificate.png" style="width: 100%; height: auto;" alt="NTI Machine Learning Certificate">
+            <div style="padding: 20px; text-align: center;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 5px;" data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h3>
+                <p style="color: var(--text-light); font-size: 0.9rem;">National Telecommunication Institute</p>
+            </div>
         </div>
     </section>
 
