@@ -41,8 +41,7 @@
         .nav-links { display: flex; gap: 20px; }
         .nav-controls { display: flex; gap: 10px; }
         .control-btn { background: var(--bg-alt); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .lang-btn-text { font-size: 0.9rem; font-weight: 600; width: auto; border-radius: 20px; padding: 0 15px; }
-
+        
         .hero { padding: 80px 0; display: flex; align-items: center; min-height: 70vh; }
         .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         .hero-text h1 { font-size: 3rem; font-weight: 800; color: var(--heading); margin-bottom: 20px; }
@@ -51,32 +50,25 @@
         .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; }
 
-        section { padding: 80px 0; }
+        section { padding: 60px 0; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h3 { font-size: 2.2rem; color: var(--heading); }
         .section-title .line { width: 80px; height: 4px; background: var(--primary); margin: 10px auto; border-radius: 2px; }
 
-        .about-card { background: var(--card-bg); padding: 40px; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
-
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-        .skill-card { background: var(--bg-alt); padding: 25px; border-radius: var(--radius); text-align: center; border: 1px solid var(--border); transition: 0.3s; }
-        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .skill-card { background: var(--bg-alt); padding: 25px; border-radius: var(--radius); text-align: center; border: 1px solid var(--border); }
+        .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: 0.3s; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; }
         .project-img { width: 100%; height: 220px; object-fit: cover; }
-        .project-content { padding: 25px; flex-grow: 1; }
-        .project-tag { background: #dbeafe; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        .project-content { padding: 25px; }
         .project-links { margin-top: 20px; display: flex; gap: 10px; }
         .link-btn { padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-        .link-gh { border: 1px solid var(--primary); color: var(--primary); }
-        .link-hf { background: #ffbd2e; color: #000; }
-        
-        .cert-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: var(--shadow); }
-        .cert-img { width: 100%; height: auto; border-bottom: 1px solid var(--border); }
 
-        footer { background: var(--heading); color: white; text-align: center; padding: 60px 0; margin-top: 50px; }
+        .cert-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: var(--shadow); }
+        
+        footer { background: var(--heading); color: white; text-align: center; padding: 60px 0; }
         .social-links a { font-size: 1.8rem; margin: 0 15px; color: #cbd5e1; }
         .social-links a:hover { color: var(--primary); }
 
@@ -91,12 +83,11 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-controls">
-                <button class="control-btn lang-btn-text" onclick="toggleLanguage()"><span id="lang-text">Ar</span></button>
+                <button class="control-btn" onclick="toggleLanguage()"><span id="lang-text">Ar</span></button>
                 <button class="control-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
             </div>
         </div>
@@ -105,13 +96,12 @@
     <header class="hero container">
         <div class="hero-grid">
             <div class="hero-text">
-                <h2 data-ar="أهلاً، أنا" data-en="Hello, I am">Hello, I am</h2>
                 <h1 data-ar="محمد جمال الغنام" data-en="Mohamed Gamal Elghanam">Mohamed Gamal Elghanam</h1>
-                <p data-ar="عالم بيانات ومهندس ذكاء اصطناعي متخصص في بناء نماذج تعلم عميق وحلول ذكية للأعمال."
-                   data-en="Data Scientist and AI Engineer specialized in building Deep Learning models and smart business solutions.">
-                    Data Scientist and AI Engineer specialized in building Deep Learning models and smart business solutions.
-                </p>
-                <div style="margin-top: 30px;"><a href="#contact" class="btn btn-primary" data-ar="تواصل معي" data-en="Contact Me">Contact Me</a></div>
+                <p data-ar="عالم بيانات ومهندس AI متخصص في بناء حلول ذكية للأعمال." data-en="Data Scientist and AI Engineer specialized in building smart business solutions.">Data Scientist and AI Engineer specialized in building smart business solutions.</p>
+                <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: start;">
+                    <a href="https://wa.me/201029796096" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:mohamedgamalelghanam@gmail.com" class="btn" style="background: #ef4444; color: white;"><i class="fas fa-envelope"></i> Email</a>
+                </div>
             </div>
             <div class="hero-img"><img src="me.png.png" alt="Mohamed"></div>
         </div>
@@ -122,10 +112,10 @@
             <h3 data-ar="نبذة عني" data-en="About Me">About Me</h3>
             <div class="line"></div>
         </div>
-        <div class="about-card">
-            <p data-ar="أنا طالب هندسة أمتلك شغفاً كبيراً بمجال الذكاء الاصطناعي وعلم البيانات. أجمع بين التفكير الهندسي التحليلي والقدرة التقنية على تحويل البيانات الضخمة إلى رؤى مفيدة. تخصصت في بناء مسارات تعلم الآلة (End-to-End) وتطوير نماذج الرؤية الحاسوبية (Computer Vision) التي تعالج مشاكل حقيقية في مجالات كالصحة والتجارة الإلكترونية." 
-               data-en="I am an engineering student with a deep passion for AI and Data Science. I combine analytical engineering thinking with the technical ability to transform big data into actionable insights. I specialize in building end-to-end Machine Learning pipelines and developing Computer Vision models that solve real-world problems in fields like healthcare and e-commerce.">
-                I am an engineering student with a deep passion for AI and Data Science. I combine analytical engineering thinking with the technical ability to transform big data into actionable insights. I specialize in building end-to-end Machine Learning pipelines and developing Computer Vision models that solve real-world problems in fields like healthcare and e-commerce.
+        <div style="background: var(--card-bg); padding: 40px; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);">
+            <p data-ar="أنا طالب هندسة أجمع بين التفكير التحليلي والقدرة التقنية على تحويل البيانات إلى رؤى مفيدة. تخصصت في بناء مسارات تعلم الآلة وتطوير نماذج الرؤية الحاسوبية التي تعالج مشاكل حقيقية." 
+               data-en="I am an engineering student combining analytical thinking with the technical ability to transform data into insights. I specialize in building ML pipelines and Computer Vision models that solve real-world problems.">
+                I am an engineering student combining analytical thinking with the technical ability to transform data into insights. I specialize in building ML pipelines and Computer Vision models that solve real-world problems.
             </p>
         </div>
     </section>
@@ -139,9 +129,20 @@
             <div class="skill-card"><i class="fab fa-python skill-icon"></i><h4>Python & SQL</h4></div>
             <div class="skill-card"><i class="fas fa-brain skill-icon"></i><h4 data-ar="تعلم الآلة" data-en="Machine Learning">Machine Learning</h4></div>
             <div class="skill-card"><i class="fas fa-eye skill-icon"></i><h4 data-ar="رؤية حاسوبية" data-en="Computer Vision">Computer Vision</h4></div>
-            <div class="skill-card"><i class="fas fa-network-wired skill-icon"></i><h4 data-ar="تعلم عميق" data-en="Deep Learning">Deep Learning</h4></div>
-            <div class="skill-card"><i class="fas fa-chart-pie skill-icon"></i><h4>Power BI & Tableau</h4></div>
-            <div class="skill-card"><i class="fas fa-broom skill-icon"></i><h4 data-ar="تنظيف البيانات" data-en="Data Cleaning">Data Cleaning</h4></div>
+            <div class="skill-card"><i class="fas fa-chart-pie skill-icon"></i><h4>Power BI</h4></div>
+        </div>
+    </section>
+
+    <section id="soft-skills" class="container" style="background-color: var(--bg-alt);">
+        <div class="section-title">
+            <h3 data-ar="المهارات الشخصية" data-en="Soft Skills">Soft Skills</h3>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fas fa-users skill-icon"></i><h4 data-ar="العمل الجماعي" data-en="Teamwork">Teamwork</h4></div>
+            <div class="skill-card"><i class="fas fa-lightbulb skill-icon"></i><h4 data-ar="حل المشكلات" data-en="Problem Solving">Problem Solving</h4></div>
+            <div class="skill-card"><i class="fas fa-comments skill-icon"></i><h4 data-ar="التواصل الفعال" data-en="Communication">Communication</h4></div>
+            <div class="skill-card"><i class="fas fa-tasks skill-icon"></i><h4 data-ar="إدارة الوقت" data-en="Time Management">Time Management</h4></div>
         </div>
     </section>
 
@@ -151,44 +152,37 @@
             <div class="line"></div>
         </div>
         <div class="cert-container">
-            <img src="certificate.png" class="cert-img" alt="NTI Certificate">
+            <img src="certificate.png" style="width: 100%;" alt="NTI Certificate">
             <div style="padding: 25px; text-align: center;">
                 <h4 data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h4>
-                <p data-ar="برنامج تدريبي مكثف من المعهد القومي للاتصالات، غطى خوارزميات التعلم بإشراف وبدون إشراف، والشبكات العصبية، وتحليل البيانات المتقدم."
-                   data-en="Intensive program by NTI, covering Supervised/Unsupervised Learning, Neural Networks, and advanced Data Analysis.">
-                   Intensive program by NTI, covering Supervised/Unsupervised Learning, Neural Networks, and advanced Data Analysis.
-                </p>
+                <p data-ar="برنامج تدريبي مكثف غطى خوارزميات التعلم والشبكات العصبية." data-en="Intensive program covering ML algorithms and Neural Networks.">Intensive program covering ML algorithms and Neural Networks.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="container" style="background-color: var(--bg-alt);">
+    <section id="projects" class="container">
         <div class="section-title">
             <h3 data-ar="المشاريع" data-en="Projects">Projects</h3>
             <div class="line"></div>
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <img src="WhatsApp-Image-2021-03-07-at-9.53.45-PM-e1702160788901.jpeg" class="project-img" alt="Pneumonia AI">
+                <img src="WhatsApp-Image-2021-03-07-at-9.53.45-PM-e1702160788901.jpeg" class="project-img" alt="Pneumonia">
                 <div class="project-content">
-                    <span class="project-tag">Deep Learning / CNN</span>
                     <h4 data-ar="كشف الالتهاب الرئوي" data-en="Pneumonia Detection AI">Pneumonia Detection AI</h4>
-                    <p data-ar="نموذج متقدم يعتمد على MobileNetV2 لتشخيص الالتهاب الرئوي من صور الأشعة السينية بدقة عالية." data-en="An advanced model using MobileNetV2 to diagnose Pneumonia from X-ray images with high accuracy.">An advanced model using MobileNetV2 to diagnose Pneumonia from X-ray images with high accuracy.</p>
                     <div class="project-links">
-                        <a href="https://huggingface.co/spaces/mohamed-gamal-ai-eng/Pneumonia-Detection-AI" target="_blank" class="link-btn link-hf"><i class="fas fa-rocket"></i> Demo</a>
-                        <a href="https://github.com/mohamedgamalelghanam-alt/Pneumonia-Detection-AI" target="_blank" class="link-btn link-gh"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://huggingface.co/spaces/mohamed-gamal-ai-eng/Pneumonia-Detection-AI" target="_blank" class="link-btn" style="background:#ffbd2e;">Demo</a>
+                        <a href="https://github.com/mohamedgamalelghanam-alt/Pneumonia-Detection-AI" target="_blank" class="link-btn" style="border:1px solid var(--primary); color:var(--primary);">GitHub</a>
                     </div>
                 </div>
             </div>
             <div class="project-card">
                 <img src="images.png" class="project-img" alt="E-commerce">
                 <div class="project-content">
-                    <span class="project-tag">Clustering / ML</span>
                     <h4 data-ar="تقسيم العملاء" data-en="Customer Segmentation">Customer Segmentation</h4>
-                    <p data-ar="استخدام خوارزمية K-Means لتصنيف العملاء بناءً على سلوك الشراء لتحسين استراتيجيات التسويق." data-en="Using K-Means clustering to classify customers based on buying behavior to optimize marketing strategies.">Using K-Means clustering to classify customers based on buying behavior to optimize marketing strategies.</p>
                     <div class="project-links">
-                        <a href="https://e-commerce-segmentation-6zsztz6gesr7kbsrhyl2hn.streamlit.app/" target="_blank" class="link-btn link-hf"><i class="fas fa-rocket"></i> Demo</a>
-                        <a href="https://github.com/mohamedgamalelghanam-alt/E-commerce-Segmentation" target="_blank" class="link-btn link-gh"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://e-commerce-segmentation-6zsztz6gesr7kbsrhyl2hn.streamlit.app/" target="_blank" class="link-btn" style="background:#ffbd2e;">Demo</a>
+                        <a href="https://github.com/mohamedgamalelghanam-alt/E-commerce-Segmentation" target="_blank" class="link-btn" style="border:1px solid var(--primary); color:var(--primary);">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -197,14 +191,13 @@
 
     <footer id="contact">
         <div class="container">
-            <h3 data-ar="تواصل معي" data-en="Get In Touch">Get In Touch</h3>
-            <p style="margin: 20px 0; font-size: 1.2rem;">mohamedgamalelghanam@gmail.com</p>
             <div class="social-links">
                 <a href="https://github.com/mohamedgamalelghanam-alt" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/mohamed-gamal-311a7226b/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://wa.me/201029796096" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:mohamedgamalelghanam@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-            <p style="margin-top: 40px; opacity: 0.6;">&copy; 2026 Mohamed Gamal Elghanam</p>
+            <p style="margin-top: 30px;">&copy; 2026 Mohamed Gamal Elghanam</p>
         </div>
     </footer>
 
@@ -215,10 +208,7 @@
             html.setAttribute('lang', lang);
             html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
             document.getElementById('lang-text').innerText = lang === 'en' ? 'Ar' : 'En';
-            document.querySelectorAll('[data-ar]').forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) el.innerText = text;
-            });
+            document.querySelectorAll('[data-ar]').forEach(el => { el.innerText = el.getAttribute(`data-${lang}`); });
         }
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
