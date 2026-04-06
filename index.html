@@ -17,6 +17,7 @@
             --text-main: #334155; --text-light: #64748b; --heading: #0f172a;
             --primary: #2563eb; --primary-hover: #1d4ed8; --border: #e2e8f0;
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); --radius: 16px; --card-bg: #ffffff;
+            --ai-particle: rgba(37, 99, 235, 0.1);
         }
 
         body.dark-mode {
@@ -24,50 +25,37 @@
             --text-main: #e2e8f0; --text-light: #94a3b8; --heading: #f8fafc;
             --primary: #38bdf8; --primary-hover: #0ea5e9; --border: #334155;
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); --card-bg: #1e293b;
+            --ai-particle: rgba(56, 189, 248, 0.15);
         }
 
         html[lang="ar"] body { font-family: 'Tajawal', sans-serif; }
         html[lang="en"] body { font-family: 'Inter', sans-serif; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            background-color: var(--bg-body); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            transition: 0.3s; 
-            overflow-x: hidden;
-            position: relative;
+        body { background-color: var(--bg-body); color: var(--text-main); transition: 0.3s; overflow-x: hidden; position: relative; }
+
+        /* --- خلفية الذكاء الاصطناعي المتحركة --- */
+        .ai-bg-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
         }
 
-        /* AI Floating Icons Background */
-        .ai-background {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .ai-icon {
+        .floating-icon {
             position: absolute;
-            color: var(--primary);
-            opacity: 0.08;
-            font-size: 2rem;
-            animation: float-around 20s linear infinite;
+            color: var(--ai-particle);
+            font-size: 2.5rem;
+            animation: moveAround 25s linear infinite;
         }
 
-        @keyframes float-around {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, 100px) rotate(90deg); }
-            50% { transform: translate(50px, 200px) rotate(180deg); }
-            75% { transform: translate(-100px, 150px) rotate(270deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+        @keyframes moveAround {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, 100vh) rotate(360deg); opacity: 0; }
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        /* تنسيقات الـ Layout الأساسية */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
         .navbar { background: var(--bg-nav); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; padding: 15px 0; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 800; font-size: 1.5rem; color: var(--heading); }
@@ -79,21 +67,19 @@
         .hero { padding: 80px 0; display: flex; align-items: center; min-height: 70vh; }
         .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         .hero-text h1 { font-size: 3rem; font-weight: 800; color: var(--heading); margin-bottom: 20px; }
-        .hero-img img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 8px solid var(--primary); transition: 0.5s; }
-        .hero-img img:hover { transform: scale(1.05); rotate: 5deg; }
+        .hero-img img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 8px solid var(--primary); }
 
-        .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 
-        section { padding: 80px 0; }
+        section { padding: 60px 0; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h3 { font-size: 2.2rem; color: var(--heading); }
         .section-title .line { width: 80px; height: 4px; background: var(--primary); margin: 10px auto; border-radius: 2px; }
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .skill-card { background: var(--card-bg); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.3s; }
-        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .skill-card:hover { transform: translateY(-5px); }
         .skill-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .skill-info i { font-size: 1.5rem; color: var(--primary); }
         .progress-bar { background: var(--bg-alt); height: 8px; border-radius: 10px; overflow: hidden; }
@@ -101,15 +87,11 @@
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; }
-        .project-card:hover { transform: translateY(-10px); }
         .project-img { width: 100%; height: 220px; object-fit: cover; }
         .project-content { padding: 25px; }
-        .project-desc { font-size: 0.9rem; color: var(--text-light); margin: 10px 0; line-height: 1.4; }
         .project-links { margin-top: 20px; display: flex; gap: 10px; }
         .link-btn { padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
 
-        .cert-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: var(--shadow); }
-        
         footer { background: var(--heading); color: white; text-align: center; padding: 60px 0; }
         .social-links a { font-size: 1.8rem; margin: 0 15px; color: #cbd5e1; }
 
@@ -118,13 +100,8 @@
 </head>
 <body>
 
-    <div class="ai-background">
-        <i class="fas fa-brain ai-icon" style="top: 10%; left: 5%; animation-duration: 25s;"></i>
-        <i class="fas fa-microchip ai-icon" style="top: 30%; left: 80%; animation-duration: 20s;"></i>
-        <i class="fas fa-network-wired ai-icon" style="top: 70%; left: 15%; animation-duration: 30s;"></i>
-        <i class="fas fa-robot ai-icon" style="top: 85%; left: 75%; animation-duration: 22s;"></i>
-        <i class="fas fa-database ai-icon" style="top: 50%; left: 40%; animation-duration: 28s;"></i>
-    </div>
+    <div class="ai-bg-container" id="ai-bg">
+        </div>
 
     <nav class="navbar">
         <div class="container nav-content">
@@ -236,8 +213,7 @@
             <img src="certificate.png" style="width: 100%; border-bottom: 1px solid var(--border);" alt="NTI Certificate">
             <div style="padding: 25px; text-align: center;">
                 <h4 data-ar="شهادة الماشين ليرنينج - NTI" data-en="Machine Learning - NTI">Machine Learning - NTI</h4>
-                <p data-ar="برنامج تدريبي مكثف غطى خوارزميات التعلم بإشراف وبدون إشراف، والشبكات العصبية، وتحليل البيانات المتقدم."
-                   data-en="Intensive program covering Supervised/Unsupervised Learning, Neural Networks, and advanced Data Analysis.">
+                <p data-ar="برنامج تدريبي مكثف غطى خوارزميات التعلم بإشراف وبدون إشراف، والشبكات العصبية، وتحليل البيانات المتقدم.">
                    Intensive program covering Supervised/Unsupervised Learning, Neural Networks, and advanced Data Analysis.
                 </p>
             </div>
@@ -250,12 +226,11 @@
             <div class="line"></div>
         </div>
         <div class="projects-grid">
-            <div class="project-card" data-aos="fade-right">
+            <div class="project-card" data-aos="zoom-in">
                 <img src="WhatsApp-Image-2021-03-07-at-9.53.45-PM-e1702160788901.jpeg" class="project-img" alt="Pneumonia">
                 <div class="project-content">
                     <h4 data-ar="كشف الالتهاب الرئوي" data-en="Pneumonia Detection AI">Pneumonia Detection AI</h4>
-                    <p class="project-desc" data-ar="نظام تشخيص آلي يستخدم شبكات CNN العميقة لتحليل صور الأشعة السينية وتمييز حالات الالتهاب الرئوي بدقة عالية." 
-                       data-en="An automated diagnosis system using deep CNNs to analyze X-ray images and identify pneumonia cases with high accuracy.">
+                    <p class="project-desc" data-ar="نظام تشخيص آلي يستخدم شبكات CNN العميقة لتحليل صور الأشعة السينية وتمييز حالات الالتهاب الرئوي بدقة عالية.">
                        An automated diagnosis system using deep CNNs to analyze X-ray images and identify pneumonia cases with high accuracy.
                     </p>
                     <div class="project-links">
@@ -264,12 +239,11 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card" data-aos="fade-left">
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
                 <img src="images.png" class="project-img" alt="E-commerce">
                 <div class="project-content">
                     <h4 data-ar="تقسيم العملاء" data-en="Customer Segmentation">Customer Segmentation</h4>
-                    <p class="project-desc" data-ar="تطبيق عملي لخوارزميات التعلم غير الخاضع للإشراف لتصنيف العملاء بناءً على سلوكهم الشرائي لمساعدة الشركات." 
-                       data-en="Practical application of unsupervised learning to classify customers based on buying patterns to help businesses.">
+                    <p class="project-desc" data-ar="تطبيق عملي لخوارزميات التعلم غير الخاضع للإشراف لتصنيف العملاء بناءً على سلوكهم الشرائي لمساعدة الشركات.">
                        Practical application of unsupervised learning to classify customers based on buying patterns to help businesses.
                     </p>
                     <div class="project-links">
@@ -296,14 +270,33 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
+        // إنشاء أيقونات AI متحركة في الخلفية
+        const bg = document.getElementById('ai-bg');
+        const icons = ['fa-brain', 'fa-microchip', 'fa-network-wired', 'fa-robot', 'fa-code'];
+        
+        for (let i = 0; i < 15; i++) {
+            const icon = document.createElement('i');
+            icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} floating-icon`;
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.top = Math.random() * 100 + 'vh';
+            icon.style.animationDelay = Math.random() * 10 + 's';
+            icon.style.animationDuration = (15 + Math.random() * 20) + 's';
+            icon.style.fontSize = (1 + Math.random() * 2) + 'rem';
+            bg.appendChild(icon);
+        }
+
         function toggleLanguage() {
             const html = document.documentElement;
             const lang = html.getAttribute('lang') === 'en' ? 'ar' : 'en';
             html.setAttribute('lang', lang);
             html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
             document.getElementById('lang-text').innerText = lang === 'en' ? 'Ar' : 'En';
-            document.querySelectorAll('[data-ar]').forEach(el => { el.innerText = el.getAttribute(`data-${lang}`); });
+            document.querySelectorAll('[data-ar]').forEach(el => { 
+                const text = el.getAttribute(`data-${lang}`);
+                if(text) el.innerText = text;
+            });
         }
+
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const icon = document.getElementById('theme-icon');
